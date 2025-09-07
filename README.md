@@ -57,12 +57,7 @@ Before you begin, ensure you have the following installed:
 ---
 ## Local Development Setup
 
-### 1. Clone the Repository
-First, clone the project to your local machine.
-`git clone <your-repo-url>`
-`cd E-VOTING`
-
-### 2. Install Dependencies
+### 1. Install Dependencies
 You need to install the dependencies for each part of the project. Open three separate terminals.
 
 - In Terminal 1 (for the blockchain):
@@ -77,37 +72,25 @@ You need to install the dependencies for each part of the project. Open three se
 `cd frontend`
 `npm install`
 
-### 3. Setup Backend Environment
-- In the `/backend` directory, create a `.env` file.
-- Add your MongoDB Atlas connection string to it:
-`MONGO_URI="your_mongodb_connection_string"`
 
 ### 4. Running the Application
 
-### Automated Start (Recommended)
-We have created a script to run the entire development environment with a single command.
-
-- From the root `E-VOTING` directory, run:
-`npm run dev`
+1. Terminal 1 (Blockchain Node):
+   `cd blockchain`
+   `npx hardhat compile`
+   `npx hardhat node`
+3. Terminal 2 (Backend Server):
+   `cd backend`
+   `node server.js`
+4. Terminal 3 (Deployment):
+   `cd blockchain`
+   `npx hardhat run scripts/deploy.js --network localhost`
+5. Terminal 4 (Frontend):
+   `cd frontend`
 
 This command will automatically:
 1. Start the local Hardhat blockchain node.
 2. Start your backend server.
 3. Deploy your smart contract to the local node.
 4. Start your frontend React application.
-
-### Manual Start (For Understanding)
-If you want to run each service manually:
-1. Terminal 1 (Blockchain Node):
-   `cd blockchain`
-   `npx hardhat node`
-2. Terminal 2 (Backend Server):
-   `cd backend`
-   `node server.js`
-3. Terminal 3 (Deployment):
-   `cd blockchain`
-   `npx hardhat run scripts/deploy.js --network localhost`
-4. Terminal 4 (Frontend):
-   `cd frontend`
-   `npm run dev`
 
